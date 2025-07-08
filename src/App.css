@@ -70,12 +70,20 @@ body {
     animation: fadeIn 0.8s ease-in-out;
 }
 
+/* Ensure Page 1 content is visible when active */
+.page-1.active .brand-column,
+.page-1.active .who-column {
+    opacity: 1 !important;
+}
+
 .page.page-1.active .brand-column {
-    animation: slideInFromLeft 0.8s ease-out;
+    animation: slideInFromLeft 0.8s ease-out forwards;
+    opacity: 1;
 }
 
 .page.page-1.active .who-column {
-    animation: slideInFromRight 0.8s ease-out 0.2s both;
+    animation: slideInFromRight 0.8s ease-out 0.2s forwards;
+    opacity: 1;
 }
 
 @keyframes fadeIn {
@@ -1008,6 +1016,7 @@ body {
   justify-content: center;
   min-height: 400px;
   opacity: 0;
+  transition: opacity 0.8s ease-out;
 }
 
 .brand-content {
@@ -1027,6 +1036,7 @@ body {
   justify-content: center;
   min-height: 400px;
   opacity: 0;
+  transition: opacity 0.8s ease-out;
 }
 
 .who-we-are-card {
