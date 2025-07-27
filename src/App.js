@@ -6,7 +6,7 @@ import Page3 from './pages/Page3';
 import Page4 from './pages/Page4';
 import Page5 from './pages/Page5';
 
-const totalPages = 5;
+const totalPages = 4;
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +53,32 @@ function App() {
       const scrollingDown = event.deltaY > 0;
       const scrollingUp = event.deltaY < 0;
 
-      // Only prevent default and navigate when at boundaries
+      // Special handling for Page 4 (Contact page) on mobile
+      if (currentPage === 4) {
+        // Check if we're on mobile/tablet
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+          // Only navigate if there's no scrollable content left
+          const canScrollDown = scrollTop + clientHeight < scrollHeight - 1;
+          const canScrollUp = scrollTop > 1;
+          
+          // For scrolling down: only navigate if we can't scroll down anymore (at bottom)
+          // For scrolling up: only navigate if we can't scroll up anymore (at top)
+          if ((scrollingDown && !canScrollDown && currentPage < totalPages) || 
+              (scrollingUp && !canScrollUp && currentPage > 1)) {
+            event.preventDefault();
+            clearTimeout(scrollTimeout.current);
+            scrollTimeout.current = setTimeout(() => {
+              if (scrollingDown && !canScrollDown) nextPage();
+              else if (scrollingUp && !canScrollUp) previousPage();
+            }, 100);
+          }
+          return; // Exit early for Page 4 mobile handling
+        }
+      }
+
+      // Default behavior for other pages or desktop
       if ((scrollingDown && isAtBottom && currentPage < totalPages) || 
           (scrollingUp && isAtTop && currentPage > 1)) {
         event.preventDefault();
@@ -116,7 +141,29 @@ function App() {
         const swipingUp = diff > 0; // swiping up (next page)
         const swipingDown = diff < 0; // swiping down (previous page)
 
-        // Only navigate when at boundaries
+        // Special handling for Page 4 (Contact page) on mobile
+        if (currentPage === 4) {
+          // Check if we're on mobile/tablet
+          const isMobile = window.innerWidth <= 768;
+          
+          if (isMobile) {
+            // Only navigate if there's no scrollable content left
+            const canScrollDown = scrollTop + clientHeight < scrollHeight - 1;
+            const canScrollUp = scrollTop > 1;
+            
+            // For swiping up (next page): only navigate if we can't scroll down anymore (at bottom)
+            // For swiping down (prev page): only navigate if we can't scroll up anymore (at top)
+            if ((swipingUp && !canScrollDown && currentPage < totalPages) || 
+                (swipingDown && !canScrollUp && currentPage > 1)) {
+              event.preventDefault();
+              if (swipingUp && !canScrollDown) nextPage();
+              else if (swipingDown && !canScrollUp) previousPage();
+            }
+            return; // Exit early for Page 4 mobile handling
+          }
+        }
+
+        // Default behavior for other pages or desktop
         if ((swipingUp && isAtBottom && currentPage < totalPages) || 
             (swipingDown && isAtTop && currentPage > 1)) {
           event.preventDefault();
@@ -151,8 +198,8 @@ function App() {
       <Page2 {...pageProps} isActive={currentPage === 2} />
       <Page3 {...pageProps} isActive={currentPage === 3} />
       <Page4 {...pageProps} isActive={currentPage === 4} />
-      <Page5 {...pageProps} isActive={currentPage === 5} />
-      <div className="scroll-hint">Scroll to navigate</div>
+      {/* <Page5 {...pageProps} isActive={currentPage === 5} /> */}
+      {/* <div className="scroll-hint">Scroll to navigate</div> */}
     </div>
   );
 }
