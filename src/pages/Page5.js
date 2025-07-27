@@ -18,7 +18,6 @@ function Page5({ currentPage, goToPage, totalPages, isActive }) {
             ></div>
           ))}
         </div>
-        <div className="page-counter">5 of 5</div>
       </div>
       {/* Side page info */}
       <div className="side-page-info prev">
@@ -30,7 +29,6 @@ function Page5({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot active"></div>
           <div className="page-dot"></div>
         </div>
-        <div className="page-counter">4 of 5</div>
       </div>
       <div className="side-page-info next hidden">
         <div className="page-name">Our Portfolio</div>
@@ -41,7 +39,6 @@ function Page5({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot"></div>
           <div className="page-dot active"></div>
         </div>
-        <div className="page-counter">5 of 5</div>
       </div>
     </div>
   );

@@ -3,10 +3,13 @@ import React from 'react';
 function Page1({ currentPage, goToPage, totalPages, isActive }) {
   return (
     <div className={`hero-page page page-1${isActive ? ' active' : ''}`} data-page="1">
-      <img
+      <video
         className="hero-bg-image"
-        src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80"
-        alt="Cityscape background"
+        src="/bgvid.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
       />
       <div className="hero-overlay"></div>
       <div className="main-content">
@@ -14,7 +17,19 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
           {/* First Column: Brand and Slogan */}
           <div className="brand-column">
             <div className="brand-content">
-              <div className="hero-brand">ON BRAND VISUAL</div>
+              <img 
+                src="/compLogo.png" 
+                alt="On Brand Visual" 
+                className="hero-brand"
+                style={{
+                  marginTop:-100,
+                  marginBottom:-60,
+                  marginLeft:-60,
+                  width: 'auto',
+                  maxWidth: '300px',
+                  objectFit: 'contain'
+                }}
+              />
               <h1 className="hero-title">WHERE STRATEGY<br />MEETS STORYTELLING</h1>
               <button className="hero-btn">ABOUT US</button>
             </div>
@@ -30,13 +45,14 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
             </div>
           </div>
         </div>
+        
       </div>
 
       {/* Page Navigation at Bottom */}
       <div className="page-info">
         <div className="current-page-name">Welcome</div>
         <div className="page-dots">
-          {[1,2,3,4,5].map(n => (
+          {[1,2,3,4].map(n => (
             <div
               key={n}
               className={`page-dot${currentPage === n ? ' active' : ''}`}
@@ -44,7 +60,6 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
             ></div>
           ))}
         </div>
-        <div className="page-counter">1 of 5</div>
       </div>
 
       {/* Side page info */}
@@ -57,7 +72,6 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot"></div>
           <div className="page-dot"></div>
         </div>
-        <div className="page-counter">1 of 5</div>
       </div>
       <div className="side-page-info next">
         <div className="page-name">About Us</div>
@@ -68,7 +82,6 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot"></div>
           <div className="page-dot"></div>
         </div>
-        <div className="page-counter">2 of 5</div>
       </div>
     </div>
   );

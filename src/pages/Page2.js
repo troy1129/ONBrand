@@ -43,42 +43,70 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
   const cardData = [
     {
       id: 1,
-      title: "Our Mission",
-      subtitle: "Driving Innovation",
-      description: "We are committed to delivering cutting-edge solutions that transform the way businesses operate in the digital age.",
+      title: "Social Media Marketing",
+      subtitle: "To Add",
+      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&crop=center",
       modalImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop&crop=center",
-      fullContent: "Our mission is to revolutionize the technology landscape by providing innovative solutions that empower businesses to reach their full potential. We believe in the power of technology to create positive change and drive growth across all industries.",
+      fullContent: `We create, manage, and optimize campaigns that build authentic connections across platforms.
+From content planning and creative development to paid advertising and analytics, we help you
+engage the right audience and grow your online presence`,
       color: "#ff6b6b"
     },
     {
       id: 2,
-      title: "Our Vision",
-      subtitle: "Future Forward",
-      description: "Envisioning a world where technology seamlessly integrates with human potential to create limitless possibilities.",
+      title: "Public Relations & Media Outreach",
+      subtitle: "To Add",
+      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop&crop=center",
       modalImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&crop=center",
-      fullContent: "We envision a future where technology and human creativity work hand in hand to solve the world's most challenging problems. Our vision drives us to constantly innovate and push the boundaries of what's possible.",
+      fullContent:`Our PR team helps craft your brand narrative and gets it in front of the right people. We build
+relationships with media outlets, influencers, and industry leaders to secure meaningful coverage
+that enhances your credibility and visibility.`,
       color: "#4ecdc4"
     },
     {
       id: 3,
-      title: "Our Values",
-      subtitle: "Excellence & Integrity",
-      description: "Built on trust, transparency, and a relentless pursuit of excellence in everything we do.",
-      icon: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop&crop=center",
+      title: "Brand Strategy & Messaging",
+      subtitle: "To Add",
+      description: "To Add.",      icon: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop&crop=center",
       modalImage: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=400&fit=crop&crop=center",
-      fullContent: "Our core values of integrity, excellence, innovation, and collaboration guide every decision we make. We believe that strong values are the foundation of any successful organization and lasting partnerships.",
+      fullContent:`We work with you to define and sharpen your brand's voice, positioning, and core messaging.
+      Through research, workshops, and collaborative sessions, we help ensure your brand story is clear,
+      consistent, and impactful across all channels`,
       color: "#45b7d1"
     },
     {
       id: 4,
-      title: "Our Team",
-      subtitle: "Expert Professionals",
-      description: "A diverse team of passionate experts dedicated to delivering exceptional results for our clients.",
+      title: "Content Creation & Campaign Development",
+      subtitle: "To Add",
+      description: "To Add.",      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
+      modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
+      fullContent:`From compelling copy and visual assets to full-scale campaign concepts, we bring ideas to life. Our
+team develops creative materials that resonate-whether it's for social media, email marketing,
+websites, or print.`,
+      color: "#f9ca24"
+    },
+    {
+      id: 5,
+      title: "Digital Advertising & Performance Marketing",
+      subtitle: "To Add",
+      description: "To Add.",      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
+      modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
+      fullContent:`We design and manage targeted ad campaigns across platforms like Facebook, Instagram, Google,
+and LinkedIn. Our data-driven approach ensures your budget is used efficiently, driving traffic, leads, and conversions.`,
+      color: "#f9ca24"
+    },
+    {
+      id: 6,
+      title: "Consultation & Custom Solutions",
+      subtitle: "To Add",
+      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
       modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
-      fullContent: "Our team consists of highly skilled professionals from diverse backgrounds, united by a shared passion for innovation and excellence. We foster a collaborative environment where creativity thrives and every voice is heard.",
+      fullContent:`Not sure where to start? We offer personalized consultations to understand your goals and
+challenges, then recommend tailored strategies to move your brand forward.
+Connect with our team today and let's build something impactful together.`,
       color: "#f9ca24"
     }
   ];
@@ -99,7 +127,11 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
       <div className="cards-container">
         <div className="page-header">
           <h1>Our Services</h1>
-          <p>Discover what drives us and shapes our vision</p>
+          <p>At On Brand Visuals, we provide smart, results-driven marketing and PR solutions designed to help
+brands stand out, connect, and thrive in today's fast-moving digital world. Every service we offer is
+backed by strategy, creativity, and a deep commitment to helping you achieve measurable impact.
+Explore how we can elevate your brand:
+</p>
         </div>
         
         <div className="cards-grid">
@@ -110,8 +142,8 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
               style={{ '--delay': `${index * 0.1}s`, '--color': card.color }}
               onClick={() => openModal(card)}
             >
-              <div className="card-icon" style={{width: '100%', padding: '0', margin: '0'}}>
-                <img src={card.icon} alt={card.title} style={{width: '100%', height: '120px', borderRadius: '8px', objectFit: 'cover'}} />
+              <div className="card-icon">
+                <img src={card.icon} alt={card.title} />
               </div>
               <div className="card-content">
                 <h3>{card.title}</h3>
@@ -124,76 +156,6 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
           ))}
         </div>
         
-        {/* Additional content to make the page scrollable */}
-        <div className="additional-content">
-          <div className="content-section">
-            <h2>Why Choose Our Services?</h2>
-            <div className="features-list">
-              <div className="feature-item">
-                <span className="feature-icon">
-                  <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=60&h=60&fit=crop&crop=center" alt="Lightning Fast" style={{width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover'}} />
-                </span>
-                <div className="feature-text">
-                  <h4>Lightning Fast</h4>
-                  <p>Optimized performance for the best user experience</p>
-                </div>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">
-                  <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=60&h=60&fit=crop&crop=center" alt="Secure & Reliable" style={{width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover'}} />
-                </span>
-                <div className="feature-text">
-                  <h4>Secure & Reliable</h4>
-                  <p>Enterprise-grade security and 99.9% uptime guarantee</p>
-                </div>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">
-                  <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=60&h=60&fit=crop&crop=center" alt="Precision Focused" style={{width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover'}} />
-                </span>
-                <div className="feature-text">
-                  <h4>Precision Focused</h4>
-                  <p>Tailored solutions that meet your specific business needs</p>
-                </div>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">
-                  <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=60&h=60&fit=crop&crop=center" alt="Award Winning" style={{width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover'}} />
-                </span>
-                <div className="feature-text">
-                  <h4>Award Winning</h4>
-                  <p>Recognized excellence in innovation and customer service</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="content-section">
-            <h2>Our Process</h2>
-            <div className="process-steps">
-              <div className="step">
-                <div className="step-number">1</div>
-                <h4>Discovery</h4>
-                <p>We begin by understanding your unique challenges and goals</p>
-              </div>
-              <div className="step">
-                <div className="step-number">2</div>
-                <h4>Strategy</h4>
-                <p>Develop a comprehensive plan tailored to your requirements</p>
-              </div>
-              <div className="step">
-                <div className="step-number">3</div>
-                <h4>Implementation</h4>
-                <p>Execute the solution with precision and attention to detail</p>
-              </div>
-              <div className="step">
-                <div className="step-number">4</div>
-                <h4>Support</h4>
-                <p>Ongoing maintenance and optimization for continued success</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Modal */}
@@ -259,7 +221,7 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
       <div className="page-info">
         <div className="current-page-name">Our Services</div>
         <div className="page-dots">
-          {[1,2,3,4,5].map(n => (
+          {[1,2,3,4].map(n => (
             <div
               key={n}
               className={`page-dot${currentPage === n ? ' active' : ''}`}
@@ -267,7 +229,6 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
             ></div>
           ))}
         </div>
-        <div className="page-counter">2 of 5</div>
       </div>
 
       {/* Side page info */}
@@ -280,7 +241,6 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot"></div>
           <div className="page-dot"></div>
         </div>
-        <div className="page-counter">1 of 5</div>
       </div>
       <div className="side-page-info next">
         <div className="page-name">Our Services</div>
@@ -291,7 +251,6 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
           <div className="page-dot"></div>
           <div className="page-dot"></div>
         </div>
-        <div className="page-counter">3 of 5</div>
       </div>
     </div>
   );
