@@ -37,7 +37,7 @@ function Page4({ currentPage, goToPage, totalPages, isActive }) {
             <div className="contact-details">
               <div className="contact-item">
                 <div className="contact-icon phone">📞</div>
-                <span>Contact Num Here</span>
+                <span>(470) 945-4008</span>
               </div>
               
               <div className="contact-item">
@@ -48,8 +48,8 @@ function Page4({ currentPage, goToPage, totalPages, isActive }) {
               <div className="contact-item">
                 <div className="contact-icon location">📍</div>
                 <div className="address">
-                  <span>Address</span>
-                  <span>Here</span>
+                  <span>8735 Dunwoody Pl.</span>
+                  <span>Suite 6, Atlanta, Georgia, 30350</span>
                 </div>
               </div>
             </div>
