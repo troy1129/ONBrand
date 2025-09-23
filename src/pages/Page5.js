@@ -3,6 +3,15 @@ import React from 'react';
 function Page5({ currentPage, goToPage, totalPages, isActive }) {
   return (
     <div className={`page page-5${isActive ? ' active' : ''}`} data-page="5">
+      <video
+        className="hero-bg-image"
+        src={process.env.PUBLIC_URL + '/bgvid.mp4'}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="hero-overlay"></div>
       {/* Main content */}
       {/* <div style={{ zIndex: 1 }}>
         <h1>Our Portfolio</h1>

@@ -7,13 +7,13 @@ function Page3({ currentPage, goToPage, totalPages, isActive }) {
       <div className="page-content">
       <video
         className="hero-bg-image"
-        src="/bgvid.mp4"
+        src={process.env.PUBLIC_URL + '/bgvid.mp4'}
         autoPlay
         loop
         muted
         playsInline
       />
-      {/* <div className="hero-overlay"></div> */}
+      <div className="hero-overlay"></div>
       <div className="main-content">
         <div className="content-columns">
           {/* First Column: Brand and Slogan */}

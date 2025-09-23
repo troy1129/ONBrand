@@ -5,7 +5,7 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
     <div className={`hero-page page page-1${isActive ? ' active' : ''}`} data-page="1">
       <video
         className="hero-bg-image"
-        src="/bgvid.mp4"
+        src={process.env.PUBLIC_URL + '/bgvid.mp4'}
         autoPlay
         loop
         muted
@@ -18,7 +18,7 @@ function Page1({ currentPage, goToPage, totalPages, isActive }) {
           <div className="brand-column">
             <div className="brand-content">
               <img 
-                src="/compLogo.png" 
+                src={process.env.PUBLIC_URL + '/compLogo.png'}
                 alt="On Brand Visual" 
                 className="hero-brand"
                 style={{

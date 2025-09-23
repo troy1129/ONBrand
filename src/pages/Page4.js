@@ -26,6 +26,15 @@ function Page4({ currentPage, goToPage, totalPages, isActive }) {
 
   return (
     <div className={`page page-4${isActive ? ' active' : ''}`} data-page="4">
+      <video
+        className="hero-bg-image"
+        src={process.env.PUBLIC_URL + '/bgvid.mp4'}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="hero-overlay"></div>
       {/* Main Contact Content */}
       <div className="contact-container">
         <div className="contact-content">

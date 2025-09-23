@@ -1,128 +1,138 @@
 import React, { useState, useEffect } from 'react';
 
 function Page2({ currentPage, goToPage, totalPages, isActive }) {
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // Handle page scroll locking and navigation disabling when modal is open
-  useEffect(() => {
-    const pageElement = document.querySelector('.page-2.active');
-    
-    if (modalOpen) {
-      // Set global modal state to disable page navigation
-      window.modalOpen = true;
-      
-      // Prevent scrolling on the active page
-      if (pageElement) {
-        pageElement.classList.add('modal-open');
-        // Scroll the page content to top to center modal
-        pageElement.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }
-    } else {
-      // Remove global modal state to re-enable page navigation
-      window.modalOpen = false;
-      
-      // Re-enable scrolling
-      if (pageElement) {
-        pageElement.classList.remove('modal-open');
-      }
-    }
-
-    // Cleanup
-    return () => {
-      window.modalOpen = false;
-      if (pageElement) {
-        pageElement.classList.remove('modal-open');
-      }
-    };
-  }, [modalOpen]);
 
   const cardData = [
     {
       id: 1,
       title: "Social Media Marketing",
-      subtitle: "To Add",
-      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop&crop=center",
-      fullContent: `We create, manage, and optimize campaigns that build authentic connections across platforms.
-From content planning and creative development to paid advertising and analytics, we help you
-engage the right audience and grow your online presence`,
+      fullContent: `We create, manage, and optimize campaigns that build authentic connections across platforms. From content planning and creative development to paid advertising and analytics, we help you engage the right audience and grow your online presence`,
       color: "#ff6b6b"
     },
     {
       id: 2,
       title: "Public Relations & Media Outreach",
-      subtitle: "To Add",
-      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&crop=center",
-      fullContent:`Our PR team helps craft your brand narrative and gets it in front of the right people. We build
-relationships with media outlets, influencers, and industry leaders to secure meaningful coverage
-that enhances your credibility and visibility.`,
+      fullContent:`Our PR team helps craft your brand narrative and gets it in front of the right people. We build relationships with media outlets, influencers, and industry leaders to secure meaningful coverage that enhances your credibility and visibility.`,
       color: "#4ecdc4"
     },
     {
       id: 3,
       title: "Brand Strategy & Messaging",
-      subtitle: "To Add",
-      description: "To Add.",      icon: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&h=400&fit=crop&crop=center",
-      fullContent:`We work with you to define and sharpen your brand's voice, positioning, and core messaging.
-      Through research, workshops, and collaborative sessions, we help ensure your brand story is clear,
-      consistent, and impactful across all channels`,
+      icon: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=400&h=300&fit=crop&crop=center",
+      fullContent:`We work with you to define and sharpen your brand's voice, positioning, and core messaging. Through research, workshops, and collaborative sessions, we help ensure your brand story is clear, consistent, and impactful across all channels`,
       color: "#45b7d1"
     },
     {
       id: 4,
       title: "Content Creation & Campaign Development",
-      subtitle: "To Add",
-      description: "To Add.",      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
-      fullContent:`From compelling copy and visual assets to full-scale campaign concepts, we bring ideas to life. Our
-team develops creative materials that resonate-whether it's for social media, email marketing,
-websites, or print.`,
+      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
+      fullContent:`From compelling copy and visual assets to full-scale campaign concepts, we bring ideas to life. Our team develops creative materials that resonate-whether it's for social media, email marketing, websites, or print.`,
       color: "#f9ca24"
     },
     {
       id: 5,
       title: "Digital Advertising & Performance Marketing",
-      subtitle: "To Add",
-      description: "To Add.",      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
-      fullContent:`We design and manage targeted ad campaigns across platforms like Facebook, Instagram, Google,
-and LinkedIn. Our data-driven approach ensures your budget is used efficiently, driving traffic, leads, and conversions.`,
+      icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
+      fullContent:`We design and manage targeted ad campaigns across platforms like Facebook, Instagram, Google, and LinkedIn. Our data-driven approach ensures your budget is used efficiently, driving traffic, leads, and conversions.`,
       color: "#f9ca24"
     },
     {
       id: 6,
       title: "Consultation & Custom Solutions",
-      subtitle: "To Add",
-      description: "To Add.",
       icon: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop&crop=center",
-      modalImage: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop&crop=center",
-      fullContent:`Not sure where to start? We offer personalized consultations to understand your goals and
-challenges, then recommend tailored strategies to move your brand forward.
-Connect with our team today and let's build something impactful together.`,
+      fullContent:`Not sure where to start? We offer personalized consultations to understand your goals and challenges, then recommend tailored strategies to move your brand forward. Connect with our team today and let's build something impactful together.`,
       color: "#f9ca24"
     }
   ];
 
-  const openModal = (card) => {
-    setSelectedCard(card);
-    setModalOpen(true);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % cardData.length);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-    setTimeout(() => setSelectedCard(null), 300);
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + cardData.length) % cardData.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = startX - endX;
+    const threshold = 50;
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    
+    setIsDragging(false);
+  };
+
+  // Mouse handlers for desktop drag
+  const handleMouseDown = (e) => {
+    setStartX(e.clientX);
+    setIsDragging(true);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+  };
+
+  const handleMouseUp = (e) => {
+    if (!isDragging) return;
+    
+    const endX = e.clientX;
+    const deltaX = startX - endX;
+    const threshold = 50;
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    
+    setIsDragging(false);
   };
 
   return (
     <div className={`page page-2${isActive ? ' active' : ''}`} data-page="2">
+      <video
+        className="hero-bg-image"
+        src={process.env.PUBLIC_URL + '/bgvid.mp4'}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="hero-overlay"></div>
       {/* Cards Container */}
       <div className="cards-container">
         <div className="page-header">
@@ -134,88 +144,61 @@ Explore how we can elevate your brand:
 </p>
         </div>
         
-        <div className="cards-grid">
-          {cardData.map((card, index) => (
+        {/* Carousel Container */}
+        <div className="carousel-container">
+          {/* Desktop Navigation Buttons */}
+          <button 
+            className="carousel-nav carousel-nav-prev"
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
+            &#8249;
+          </button>
+          
+          <div className="carousel-track-wrapper">
             <div 
-              key={card.id}
-              className="card"
-              style={{ '--delay': `${index * 0.1}s`, '--color': card.color }}
-              onClick={() => openModal(card)}
+              className="carousel-track"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={() => setIsDragging(false)}
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              <div className="card-icon">
-                <img src={card.icon} alt={card.title} />
-              </div>
-              <div className="card-content">
-                <h3>{card.title}</h3>
-                <h4>{card.subtitle}</h4>
-              </div>
-              <div className="card-hover-overlay">
-                <span>Click to learn more</span>
-              </div>
+              {cardData.map((card, index) => (
+                <div 
+                  key={card.id}
+                  className="carousel-slide"
+                  style={{ '--color': card.color }}
+                >
+                  <div className="card">
+                    <div className="card-icon">
+                      <img src={card.icon} alt={card.title} />
+                    </div>
+                    <div className="card-content">
+                      <h3>{card.title}</h3>
+                      <p>{card.fullContent}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <button 
+            className="carousel-nav carousel-nav-next"
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
+            &#8250;
+          </button>
         </div>
+
         
       </div>
 
-      {/* Modal */}
-      {modalOpen && selectedCard && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>&times;</button>
-            <div 
-              className="modal-header" 
-              style={{ 
-                '--color': `color-mix(in srgb, ${selectedCard.color} 0%, transparent)`,
-                backgroundImage: `url(${selectedCard.modalImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                position: 'relative',
-                height: '250px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%)',
-                borderRadius: 'inherit'
-              }}></div>
-              <h2 style={{
-                position: 'relative',
-                zIndex: 2,
-                color: 'white',
-                textShadow: '0 2px 4px rgba(0,0,0,0.8)',
-                margin: '0',
-                fontSize: '2.5rem',
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}>{selectedCard.title}</h2>
-              <h3 style={{
-                position: 'relative',
-                zIndex: 2,
-                color: 'white',
-                textShadow: '0 1px 2px rgba(0,0,0,0.8)',
-                margin: '0.5rem 0 0 0',
-                fontSize: '1.2rem',
-                fontWeight: 'normal',
-                textAlign: 'center',
-                opacity: 0.9
-              }}>{selectedCard.subtitle}</h3>
-            </div>
-            <div className="modal-body">
-              <p>{selectedCard.fullContent}</p>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Page Navigation Info */}
       <div className="page-info">
