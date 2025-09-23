@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Page2({ currentPage, goToPage, totalPages, isActive }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -60,9 +60,6 @@ function Page2({ currentPage, goToPage, totalPages, isActive }) {
     setCurrentSlide((prev) => (prev - 1 + cardData.length) % cardData.length);
   };
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
 
   // Touch handlers for mobile swipe
   const handleTouchStart = (e) => {
