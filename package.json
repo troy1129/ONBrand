@@ -1,7 +1,6 @@
 {
   "name": "single-viewport-navigation",
   "version": "0.1.0",
-  "homepage": "/home",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

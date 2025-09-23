@@ -911,6 +911,10 @@ body {
     color: #666;
 }
 
+.page-4 .page-info, .page-4 .side-page-info {
+    z-index: 15 !important;
+}
+
 /* Contact page specific styles */
 .contact-container {
     width: 100%;
@@ -920,6 +924,8 @@ body {
     justify-content: center;
     padding: 2rem 8rem;
     box-sizing: border-box;
+    position: relative;
+    z-index: 10;
 }
 
 .contact-content {
@@ -943,16 +949,18 @@ body {
 .contact-info h1 {
     font-size: 3.2rem;
     font-weight: 700;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .contact-info p {
     font-size: 1.1rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 3rem;
     line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .contact-details {
@@ -971,16 +979,18 @@ body {
     width: 20px;
     height: 20px;
     font-size: 1.2rem;
-    color: #ff5722;
+    color: #ffab40;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .contact-item span {
     font-size: 1.1rem;
-    color: #333;
+    color: #ffffff;
     font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .address {
@@ -990,9 +1000,10 @@ body {
 
 .address span {
     font-size: 1.1rem;
-    color: #333;
+    color: #ffffff;
     font-weight: 500;
     line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .contact-form-section {
@@ -1017,8 +1028,9 @@ body {
 .form-group label {
     font-size: 1rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .name-inputs {
