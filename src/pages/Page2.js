@@ -187,7 +187,7 @@ Explore how we can elevate your brand:
                   style={{ '--color': card.color }}
                 >
                   <div className="card">
-                    <div className="card-icon">
+                    <div className="card-icon" style={{height:'50%'}}>
                       <img src={card.icon} alt={card.title} />
                     </div>
                     <div className="card-content">
