@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 function Page2({ currentPage, goToPage, totalPages, isActive }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startX, setStartX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
+  // Handle window resize for responsive centering
+  const handleResize = useCallback(() => {
+    setWindowDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [handleResize]);
 
   const cardData = [
     {
@@ -153,7 +169,7 @@ Explore how we can elevate your brand:
           </button>
           
           <div className="carousel-track-wrapper">
-            <div 
+            <div
               className="carousel-track"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
