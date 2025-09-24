@@ -225,11 +225,11 @@ body {
 }
 
 .side-page-info.prev {
-    left: 4rem;
+    left: 2rem;
 }
 
 .side-page-info.next {
-    right: 4rem;
+    right: 2rem;
 }
 
 .side-page-info .page-name {
@@ -315,12 +315,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
-    padding: 0 6rem;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 3rem 6rem 4rem 6rem;
     box-sizing: border-box;
     position: relative;
     z-index: 10;
+    overflow: hidden;
+    gap: 2rem;
 }
 
 .page-header {
@@ -328,7 +332,8 @@ body {
     animation: fadeInUp 0.8s ease-out 0.2s both;
     width: 100%;
     max-width: 1020px;
-    margin: 0 auto 2rem auto;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .page-header h1 {
@@ -351,25 +356,29 @@ body {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: min(1200px, calc(100vw - 4rem));
+    max-width: 95vw;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: clamp(1rem, 3vh, 2.5rem) 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(1rem, 3vw, 3rem);
+    gap: 0.5rem;
     box-sizing: border-box;
+    flex: 1;
+    min-height: 35vh;
+    max-height: 70vh;
 }
 
 .carousel-track-wrapper {
-    flex: 1;
-    width: 100%;
+    width: min(60vw, 70vh);
+    max-width: 800px;
     overflow: hidden;
     position: relative;
     padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .carousel-track {
@@ -443,18 +452,21 @@ body {
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: clamp(1.5rem, 3vh, 2.5rem);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
     transform-origin: center;
-    width: 900px;
-    height: 600px;
+    width: min(60vw, 70vh);
+    height: auto;
+    max-height: 60vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
+    margin: 2rem auto;
+    box-sizing: border-box;
 }
 
 @keyframes cardSlideIn {
@@ -515,8 +527,8 @@ body {
 
 .card-icon {
     width: 100%;
-    height: 300px;
-    margin-bottom: 2rem;
+    height: clamp(150px, 20vh, 250px);
+    margin-bottom: clamp(1rem, 2vh, 1.5rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -538,13 +550,13 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     min-height: 0;
-    overflow: visible;
+    overflow-y: auto;
     padding-top: 0.5rem;
 }
 
 .card-content h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1.2rem, 3vh, 2.2rem);
+    margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
     color: white;
     font-weight: 800;
     line-height: 1.3;
@@ -554,17 +566,19 @@ body {
     overflow-wrap: break-word;
     hyphens: auto;
     text-align: center;
+    flex-shrink: 0;
 }
 
 
 .card-content p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: clamp(0.9rem, 2.2vh, 1.3rem);
+    line-height: 1.5;
     opacity: 0.95;
-    margin-top: 1.5rem;
+    margin-top: clamp(0.8rem, 2vh, 1.5rem);
     max-width: 100%;
     text-align: center;
     color: white;
+    flex: 1;
 }
 
 
@@ -680,63 +694,52 @@ body {
     .side-page-info {
         display: none;
     }
-    
+
     .cards-container {
-        padding: 1rem 2rem;
+        padding: 2rem 1rem 3rem 1rem;
+        gap: clamp(1rem, 2vh, 1.5rem);
     }
-    
+
     .page-header h1 {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 4vh, 2.2rem);
     }
-    
+
     .page-header p {
-        font-size: 0.95rem;
+        font-size: clamp(0.8rem, 1.8vh, 1rem);
         line-height: 1.4;
     }
-    
+
     .carousel-container {
+        max-width: 96vw;
+        gap: 0.3rem;
+        min-height: 45vh;
+        max-height: 65vh;
+    }
+
+    .carousel-track-wrapper {
+        width: min(85vw, 60vh);
         max-width: 400px;
-        padding: 1.5rem 0;
-        gap: 1rem;
     }
-    
+
     .card {
-        width: 360px;
-        height: auto;
-        min-height: 500px;
-        padding: 1.2rem;
+        width: min(85vw, 60vh);
+        max-height: 55vh;
+        min-height: 40vh;
+        padding: clamp(1rem, 2.5vh, 1.5rem);
         border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
-    
+
     .card-icon {
-        height: 180px;
-        margin-bottom: 1rem;
-        flex-shrink: 0;
+        height: clamp(120px, 15vh, 160px);
     }
-    
-    .card-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
+
     .card-content h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.3;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
+        font-size: clamp(1.1rem, 2.5vh, 1.4rem);
     }
-    
+
     .card-content p {
-        font-size: 0.9rem;
+        font-size: clamp(0.8rem, 1.8vh, 1rem);
         line-height: 1.4;
-        margin-top: 0.8rem;
     }
     
     .modal {
@@ -797,62 +800,50 @@ body {
 }
 
 @media (max-width: 480px) {
-    .page-header h1 {
-        font-size: 2rem;
+    .cards-container {
+        padding: 2rem 0.8rem 3rem 0.8rem;
+        gap: clamp(0.8rem, 1.5vh, 1.2rem);
     }
-    
+
+    .page-header h1 {
+        font-size: clamp(1.6rem, 3.5vh, 2rem);
+    }
+
     .page-header p {
-        font-size: 0.85rem;
+        font-size: clamp(0.75rem, 1.6vh, 0.9rem);
         line-height: 1.3;
     }
 
-    .cards-container {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
     .carousel-container {
-        max-width: 340px;
-        padding: 1rem 0;
-        gap: 0.5rem;
+        max-width: 95vw;
+        gap: 0.2rem;
+        min-height: 48vh;
+        max-height: 62vh;
     }
-    
+
+    .carousel-track-wrapper {
+        width: min(90vw, 55vh);
+        max-width: 350px;
+    }
+
     .card {
-        width: 320px;
-        height: auto;
-        min-height: 460px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        width: min(90vw, 55vh);
+        max-height: 52vh;
+        min-height: 42vh;
+        padding: clamp(0.8rem, 2vh, 1.2rem);
     }
-    
+
     .card-icon {
-        height: 160px;
-        margin-bottom: 0.8rem;
-        flex-shrink: 0;
+        height: clamp(100px, 12vh, 140px);
     }
-    
-    .card-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
+
     .card-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.6rem;
-        line-height: 1.3;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
+        font-size: clamp(1rem, 2.2vh, 1.3rem);
     }
-    
+
     .card-content p {
-        font-size: 0.8rem;
+        font-size: clamp(0.7rem, 1.6vh, 0.9rem);
         line-height: 1.3;
-        margin-top: 0.6rem;
     }
     
     .content-section h2 {
@@ -1169,11 +1160,11 @@ body {
     }
     
     .side-page-info.prev {
-        left: 5rem;
+        left: 1.5rem;
     }
-    
+
     .side-page-info.next {
-        right: 5rem;
+        right: 1.5rem;
     }
     
     .main-content {
@@ -1639,11 +1630,11 @@ body {
 /* Tablet Responsive Styles */
 @media (min-width: 769px) and (max-width: 1199px) {
     .side-page-info.prev {
-        left: 3rem;
+        left: 1rem;
     }
-    
+
     .side-page-info.next {
-        right: 3rem;
+        right: 1rem;
     }
     
     .main-content {
@@ -1687,104 +1678,65 @@ body {
 
 /* Tablet styles */
 @media (min-width: 769px) and (max-width: 1023px) {
+    .cards-container {
+        padding: 3rem 2rem 4rem 2rem;
+        gap: clamp(1.5rem, 2.5vh, 2rem);
+    }
+
     .carousel-container {
-        max-width: 800px;
-        padding: 1.5rem 0;
-        gap: 2.5rem;
+        max-width: 90vw;
+        gap: 0.5rem;
+        min-height: 40vh;
+        max-height: 68vh;
     }
-    
+
+    .carousel-track-wrapper {
+        width: min(65vw, 75vh);
+        max-width: 650px;
+    }
+
     .card {
-        width: 650px;
-        height: auto;
-        min-height: 480px;
-        padding: 2rem;
-    }
-    
-    .card-icon {
-        height: 240px;
-        margin-bottom: 1.5rem;
-    }
-    
-    .card-content h3 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    .card-content p {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        margin-top: 1.2rem;
+        width: min(65vw, 75vh);
+        max-height: 58vh;
+        min-height: 35vh;
     }
 }
 
-/* Comprehensive responsive carousel centering for all screen sizes */
+/* Desktop and larger screens */
 @media (min-width: 1024px) {
+    .cards-container {
+        padding: 3rem clamp(2rem, 5vw, 8rem) 4rem clamp(2rem, 5vw, 8rem);
+        gap: clamp(1.5rem, 3vh, 2.5rem);
+    }
+
+    .page-header h1 {
+        font-size: clamp(2.5rem, 5vh, 3.5rem);
+    }
+
+    .page-header p {
+        font-size: clamp(1rem, 2vh, 1.3rem);
+        line-height: 1.5;
+    }
+
     .carousel-container {
-        max-width: min(1200px, calc(100vw - 6rem));
-        gap: clamp(2rem, 4vw, 4rem);
+        max-width: 90vw;
+        gap: 0.5rem;
+        min-height: 35vh;
+        max-height: 70vh;
     }
 
-    .card {
-        width: min(700px, calc(100vw - 12rem));
-        max-width: 700px;
-        height: auto;
-        min-height: 550px;
-        margin: 0 auto;
-        padding: 2.5rem;
-    }
-
-    .card-content h3 {
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
-        line-height: 1.3;
-        margin-bottom: 1rem;
-        word-wrap: break-word;
-        hyphens: auto;
-    }
-}
-
-@media (min-width: 1400px) {
-    .carousel-container {
-        max-width: 1200px;
-        gap: 4rem;
-    }
-
-    .card {
-        width: 750px;
+    .carousel-track-wrapper {
+        width: min(55vw, 80vh);
         max-width: 750px;
-        min-height: 600px;
-        padding: 3rem;
-    }
-
-    .card-content h3 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 1.2rem;
-    }
-}
-
-/* Ensure centering works on ultra-wide screens */
-@media (min-width: 1920px) {
-    .carousel-container {
-        max-width: 1400px;
     }
 
     .card {
-        width: 800px;
-        max-width: 800px;
-        min-height: 650px;
-        padding: 3.5rem;
-    }
-
-    .card-content h3 {
-        font-size: 2.4rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
+        width: min(55vw, 80vh);
+        max-height: 62vh;
+        min-height: 32vh;
     }
 }
+
 
 /* Force centering on window resize */
 .carousel-track-wrapper,
